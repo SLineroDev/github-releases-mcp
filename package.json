@@ -1,14 +1,30 @@
 {
-  "name": "github-releases-mcp",
+  "name": "@slinerodev/github-releases-mcp",
   "version": "0.0.1",
   "description": "A Model Context Protocol (MCP) tool that fetches and displays GitHub repository releases in a formatted way",
-  "main": "main.ts",
+  "main": "dist/main.js",
+  "types": "dist/main.d.ts",
   "type": "module",
+  "bin": {
+    "github-releases-mcp": "./dist/main.js"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "scripts": {
+    "build": "tsc",
     "dev": "tsx watch main.ts",
     "start": "tsx main.ts",
+    "prepublishOnly": "pnpm build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [
+    "mcp",
+    "github",
+    "releases",
+    "modelcontextprotocol"
+  ],
   "author": "Sergio Linero",
   "license": "ISC",
   "packageManager": "pnpm@10.6.3+sha512.bb45e34d50a9a76e858a95837301bfb6bd6d35aea2c5d52094fa497a467c43f5c440103ce2511e9e0a2f89c3d6071baac3358fc68ac6fb75e2ceb3d2736065e6",
@@ -18,6 +34,18 @@
   },
   "devDependencies": {
     "@types/node": "^22.15.2",
-    "tsx": "^4.7.1"
-  }
+    "tsx": "^4.7.1",
+    "typescript": "^5.4.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/slinerodev/github-releases-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/slinerodev/github-releases-mcp/issues"
+  },
+  "homepage": "https://github.com/slinerodev/github-releases-mcp#readme"
 }
