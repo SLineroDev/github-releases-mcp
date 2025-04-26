@@ -30,9 +30,9 @@ const server = new McpServer({
   version: "1.0.0",
 });
 
-// Register 'github.releases' tool
+// Register 'github_releases' tool
 server.tool(
-  "github.releases",
+  "github_releases",
   "Get the list of releases from a GitHub repository.",
   schema,
   async ({ owner, repo }) => {
