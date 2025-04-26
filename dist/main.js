@@ -25,8 +25,8 @@ const server = new McpServer({
     name: "GitHub Releases MCP Server",
     version: "1.0.0",
 });
-// Register 'github.releases' tool
-server.tool("github.releases", "Get the list of releases from a GitHub repository.", schema, async ({ owner, repo }) => {
+// Register 'github_releases' tool
+server.tool("github_releases", "Get the list of releases from a GitHub repository.", schema, async ({ owner, repo }) => {
     const url = `https://api.github.com/repos/${owner}/${repo}/releases`;
     const config = getGitHubConfig();
     try {

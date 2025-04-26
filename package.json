@@ -14,8 +14,8 @@
   ],
   "scripts": {
     "build": "tsc",
-    "dev": "tsx watch main.ts",
-    "start": "tsx main.ts",
+    "dev": "tsx watch src/main.ts",
+    "start": "tsx src/main.ts",
     "prepublishOnly": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
