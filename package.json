@@ -1,6 +1,6 @@
 {
   "name": "@slinerodev/github-releases-mcp",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A Model Context Protocol (MCP) toolkit for GitHub releases management. Features include detailed release information, version comparison, and release listing with rich formatting. Perfect for changelog generation, version tracking, and release documentation.",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
