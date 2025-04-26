@@ -2,6 +2,20 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
 
+// Función para obtener la configuración de GitHub
+function getGitHubConfig() {
+  return {
+    token: process.env.GITHUB_PERSONAL_ACCESS_TOKEN,
+    headers: {
+      "Accept": "application/vnd.github+json",
+      "User-Agent": "mcp-github-releases-server",
+      ...(process.env.GITHUB_PERSONAL_ACCESS_TOKEN && {
+        "Authorization": `Bearer ${process.env.GITHUB_PERSONAL_ACCESS_TOKEN}`
+      })
+    }
+  };
+}
+
 // Input schema definition using Zod
 const schema = {
   owner: z.string().describe("GitHub repository owner"),
@@ -21,13 +35,11 @@ server.tool(
   schema,
   async ({ owner, repo }) => {
     const url = `https://api.github.com/repos/${owner}/${repo}/releases`;
+    const config = getGitHubConfig();
 
     try {
       const response = await fetch(url, {
-        headers: {
-          "Accept": "application/vnd.github+json",
-          "User-Agent": "mcp-github-releases-server",
-        },
+        headers: config.headers
       });
 
       if (!response.ok) {
