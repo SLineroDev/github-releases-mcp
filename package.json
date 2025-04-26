@@ -1,7 +1,7 @@
 {
   "name": "@slinerodev/github-releases-mcp",
-  "version": "0.0.2",
-  "description": "A Model Context Protocol (MCP) tool that fetches and displays GitHub repository releases in a formatted way",
+  "version": "0.1.0",
+  "description": "A Model Context Protocol (MCP) toolkit for GitHub releases management. Features include detailed release information, version comparison, and release listing with rich formatting. Perfect for changelog generation, version tracking, and release documentation.",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
   "type": "module",
@@ -23,13 +23,19 @@
     "mcp",
     "github",
     "releases",
-    "modelcontextprotocol"
+    "modelcontextprotocol",
+    "changelog",
+    "version-comparison",
+    "release-management",
+    "semantic-versioning"
   ],
   "author": "Sergio Linero",
   "license": "ISC",
   "packageManager": "pnpm@10.6.3+sha512.bb45e34d50a9a76e858a95837301bfb6bd6d35aea2c5d52094fa497a467c43f5c440103ce2511e9e0a2f89c3d6071baac3358fc68ac6fb75e2ceb3d2736065e6",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.10.2",
+    "@types/semver": "^7.7.0",
+    "semver": "^7.7.1",
     "zod": "^3.24.3"
   },
   "devDependencies": {
