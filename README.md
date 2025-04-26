@@ -30,23 +30,6 @@ The server can be used with various MCP clients. Add the following configuration
 - Claude Desktop: `claude_desktop_config.json`
 - Windsurf: `windsurf_config.json`
 
-### Using Local Development Version
-
-```json
-{
-  "mcpServers": {
-    "github-releases": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "tsx",
-        "${workspaceRoot}/main.ts"
-      ]
-    }
-  }
-}
-```
-
 ### Using Published Version
 
 ```json
@@ -66,7 +49,25 @@ The server can be used with various MCP clients. Add the following configuration
 }
 ```
 
-Note: 
+### Using Local Development Version
+
+```json
+{
+  "mcpServers": {
+    "github-releases": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "tsx",
+        "${workspaceRoot}/main.ts"
+      ]
+    }
+  }
+}
+```
+
+Note:
+
 - For VS Code, replace `mcpServers` with `mcp.servers` in the configuration.
 - Replace `your_token_here` with your GitHub Personal Access Token if you want to access private repositories or need higher rate limits.
 - The local development version is typically used when working on the server code itself.
@@ -84,7 +85,7 @@ The server provides the following tool:
 
 ### Example Response
 
-```
+```typescript
 🔖 v1.0.0 (First stable release)
 🗓️ 2025-04-01T12:00:00Z
 📝 This is the first stable release of the project...
@@ -99,14 +100,16 @@ The server provides the following tool:
 ## Development
 
 1. Install dependencies:
-```bash
-pnpm install
-```
+
+    ```bash
+    pnpm install
+    ```
 
 2. Run the server:
-```bash
-pnpm start
-```
+
+    ```bash
+    pnpm start
+    ```
 
 ## Features
 
