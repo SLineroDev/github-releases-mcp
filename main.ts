@@ -2,22 +2,22 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
 
-// Definición del esquema de entrada utilizando Zod
-const schema = z.object({
-  owner: z.string().describe("Propietario del repositorio de GitHub"),
-  repo: z.string().describe("Nombre del repositorio de GitHub"),
-});
+// Input schema definition using Zod
+const schema = {
+  owner: z.string().describe("GitHub repository owner"),
+  repo: z.string().describe("GitHub repository name"),
+};
 
-// Creación del servidor MCP
+// Create MCP server
 const server = new McpServer({
   name: "GitHub Releases MCP Server",
   version: "1.0.0",
 });
 
-// Registro de la herramienta 'github.releases'
+// Register 'github.releases' tool
 server.tool(
   "github.releases",
-  "Obtiene la lista de releases de un repositorio de GitHub.",
+  "Get the list of releases from a GitHub repository.",
   schema,
   async ({ owner, repo }) => {
     const url = `https://api.github.com/repos/${owner}/${repo}/releases`;
@@ -35,7 +35,7 @@ server.tool(
           content: [
             {
               type: "text",
-              text: `Error al obtener releases: ${response.status} ${response.statusText}`,
+              text: `Error fetching releases: ${response.status} ${response.statusText}`,
             },
           ],
           isError: true,
@@ -49,7 +49,7 @@ server.tool(
           content: [
             {
               type: "text",
-              text: `No se encontraron releases para el repositorio ${owner}/${repo}.`,
+              text: `No releases found for repository ${owner}/${repo}.`,
             },
           ],
         };
@@ -66,7 +66,7 @@ server.tool(
       const formattedReleases = releases
         .map(
           (r) =>
-            `🔖 ${r.tag_name} (${r.name})\n🗓️ ${r.published_at}\n📝 ${r.body?.slice(0, 200) ?? "Sin descripción"}\n`
+            `🔖 ${r.tag_name} (${r.name})\n🗓️ ${r.published_at}\n📝 ${r.body?.slice(0, 200) ?? "No description"}\n`
         )
         .join("\n---\n");
 
@@ -83,7 +83,7 @@ server.tool(
         content: [
           {
             type: "text",
-            text: `Excepción al obtener releases: ${error.message}`,
+            text: `Exception while fetching releases: ${error.message}`,
           },
         ],
         isError: true,
@@ -92,6 +92,6 @@ server.tool(
   }
 );
 
-// Conexión del servidor utilizando el transporte stdio
+// Connect server using stdio transport
 const transport = new StdioServerTransport();
 await server.connect(transport);

@@ -1,16 +1,22 @@
 {
   "name": "github-releases-mcp",
   "version": "0.0.1",
+  "description": "A Model Context Protocol (MCP) tool that fetches and displays GitHub repository releases in a formatted way",
   "main": "main.ts",
+  "type": "module",
   "scripts": {
+    "dev": "tsx watch main.ts",
+    "start": "tsx main.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Sergio Linero",
   "license": "ISC",
-  "description": "",
   "packageManager": "pnpm@10.6.3+sha512.bb45e34d50a9a76e858a95837301bfb6bd6d35aea2c5d52094fa497a467c43f5c440103ce2511e9e0a2f89c3d6071baac3358fc68ac6fb75e2ceb3d2736065e6",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.10.2",
     "zod": "^3.24.3"
+  },
+  "devDependencies": {
+    "tsx": "^4.7.1"
   }
 }
